@@ -1,0 +1,43 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: smartphoto-db  # 显式指定容器名
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: photo_lab
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./server/db_init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./server
+    image: smartphoto-backend:latest # 显式指定镜像名，防止自动生成出错
+    container_name: smartphoto-backend
+    ports:
+      - "3001:3001"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+    depends_on:
+      - db
+    volumes:
+      - ./server/uploads:/app/uploads
+
+  frontend:
+    build: 
+      context: ./smartphoto-lab
+      args:
+        # 智谱 API Key
+        VITE_ZHIPU_API_KEY: "10e8ecb1d6934864a0ad03ed907e7b37.8pzfF46df5MPiAAx"
+    image: smartphoto-frontend:latest # 显式指定镜像名
+    container_name: smartphoto-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
