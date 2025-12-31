@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User } from '../types';
-import { getApiUrl } from '../config';
+import { getApiUrl } from '../utils/config';
 
 interface AuthProps {
   onLogin: (user: User) => void;

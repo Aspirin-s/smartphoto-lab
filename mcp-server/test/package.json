@@ -1,0 +1,10 @@
+{
+  "name": "smartphoto-mcp-test",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SmartPhoto MCP Interactive Test Client",
+  "main": "test-mcp-interactive.js",
+  "scripts": {
+    "test-mcp": "node test-mcp-interactive.js"
+  }
+}

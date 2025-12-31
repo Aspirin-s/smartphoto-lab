@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react'; // 1. 引入 useEffect
-import { getApiUrl } from './config';
+import React, { useState, useMemo, useEffect } from 'react';
+import { getApiUrl } from './utils/config';
 import Navbar from './components/Navbar';
 import Auth from './components/Auth';
 import UploadModal from './components/UploadModal';
