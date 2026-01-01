@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS photos (
   timestamp BIGINT,
   width INT,
   height INT,
-  size INT,          -- 【新增】文件大小 (bytes)
-  type VARCHAR(50),  -- 【新增】MIME类型 (image/jpeg)
+  size INT,          -- 文件大小 (bytes)
+  type VARCHAR(50),  -- MIME类型 (image/jpeg)
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
